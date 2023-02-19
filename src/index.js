@@ -19,7 +19,7 @@ const koaJson = require("koa-json");
 const koa = new Koa();
 koa.use(routes.routes());
 koa.use(bodyParse());
-koa.use(koaJson());
+// koa.use(koaJson());
 // koa.use(swaggerUi.serve);
 // koa.use(swaggerUi.setup(swaggerDocument));
 var router = new Router();
