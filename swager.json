@@ -1,0 +1,13 @@
+{
+    "info": {
+      "title": "Minha API",
+      "description": "Descrição da minha API",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {}
+  }
