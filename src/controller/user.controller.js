@@ -1,4 +1,5 @@
 const db = require("../database/db.js");
+const Joi = require("joi");
 
 const userController = {
   async getAllUsers(ctx) {
@@ -31,18 +32,35 @@ const userController = {
     }
   },
 
-  async createUser(ctx) {
-    const { name, email, password } = ctx.request.body || {};
-    const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-    try {
-      const result = await db.run(sql, name, email, password);
-      ctx.status = 201;
-      ctx.body = { id: result.lastID };
-    } catch (err) {
-      ctx.status = 400;
-      ctx.body = { message: err.message };
-    }
-  },
+ async createUser(ctx) {
+  const { name, email, password } = ctx.request.body || {};
+  
+  // Definir o schema de validação
+  const schema = Joi.object({
+    name: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().required()
+  });
+
+  // Validar os dados da requisição com base no schema
+  const { error, value } = schema.validate({ name, email, password });
+  if (error) {
+    ctx.status = 400;
+    ctx.body = { message: error.details[0].message };
+    return;
+  }
+
+  // Inserir os dados no banco de dados
+  const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+  try {
+    const result = await db.run(sql, value.name, value.email, value.password);
+    ctx.status = 201;
+    ctx.body = { id: result.lastID };
+  } catch (err) {
+    ctx.status = 400;
+    ctx.body = { message: err.message };
+  }
+},
 
   async updateUser(ctx) {
     const { id } = ctx.params;
