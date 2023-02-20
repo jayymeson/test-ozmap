@@ -14,7 +14,8 @@ let db = new sqlite.Database(DBSOURCE, (err) => {
             name TEXT,
             email TEXT UNIQUE,
             password TEXT,
-            img TEXT
+            img TEXT,
+            description TEXT
           )`,
       (err) => {
         if (err) {

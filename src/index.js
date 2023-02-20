@@ -20,7 +20,7 @@ koa.use(koaJson());
 
 koa.use(routes.routes());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const server = koa.listen(PORT, () => {
   console.log(`Seu servidor esta rodando em http://localhost:${PORT}`);
