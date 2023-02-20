@@ -10,6 +10,7 @@ const Koa = require("koa");
 const routes = require("./router/user.router.js");
 const bodyParse = require("koa-bodyparser");
 const koaJson = require("koa-json");
+const cors = require('koa-cors');
 // const swaggerJsdoc = require("swagger-jsdoc");
 // const swaggerUi = require("swagger-ui-express");
 // const convert = require("koa-convert");
@@ -17,6 +18,7 @@ const koaJson = require("koa-json");
 const koa = new Koa();
 koa.use(bodyParse());
 koa.use(koaJson());
+koa.use(cors());
 
 koa.use(routes.routes());
 
