@@ -30,7 +30,9 @@
         "koa-json-body": "^5.3.0",
         "koa-router": "^9.4.0",
         "nodemon": "^2.0.20",
+        "sinon-test": "^3.1.5",
         "sqlite3": "^5.1.4",
+        "supertest": "^6.3.3",
         "swagger-ui-express": "^4.6.1"
     },
     "devDependencies": {
