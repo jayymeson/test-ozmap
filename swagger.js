@@ -1,8 +1,7 @@
 const Koa = require("koa");
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerSpec = require("../swagger.js");
 const SwaggerUI = require("swagger-ui");
 const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerDocument = require("./schemas.json");
 
 const koa = new Koa();
 
@@ -13,7 +12,7 @@ const swaggerDefinition = {
     description:
       "É uma api para cadastro de usuários, como forma de teste para a vaga de desenvolvedor na Ozmap.",
   },
-  schemas: require("./schemas.json"),
+  components: require("./schemas.json"),
 };
 
 const options = {
@@ -21,10 +20,11 @@ const options = {
   apis: ["./src/router/user.router.js"], // altere o caminho para onde estão suas rotas
 };
 
-koa.use("/api", SwaggerUI.server, SwaggerUI.setup(swaggerSpec));
-
-require("./src/router/user.router.js");
-
 const swaggerSpec = swaggerJSDoc(options);
 
+koa.use(require("./src/router/user.router.js"));
+
+koa.use("/docs", SwaggerUI.server, SwaggerUI.setup(swaggerSpec));
+
 module.exports = swaggerSpec;
+
