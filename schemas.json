@@ -1,0 +1,41 @@
+{
+    "components": {
+      "schemas": {
+        "users": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "img": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Erro na requisição"
+      },
+      "404": {
+        "description": "Não encontrado"
+      },
+      "500": {
+        "description": "Erro interno do servidor"
+      }
+    }
+  }
+  

@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon src/index.js",
-        "test": "mocha"
+        "test": "mocha",
+        "build": "babel src -d dist"
     },
     "repository": {
         "type": "git",
@@ -21,21 +22,37 @@
     "license": "ISC",
     "homepage": "https://bitbucket.org/developmentOneZero/fileteste#readme",
     "dependencies": {
+        "bcrypt": "^5.1.0",
+        "dotenv": "^16.0.3",
+        "esm": "^3.2.25",
         "joi": "^17.8.1",
         "koa": "^2.13.0",
         "koa-body-parse": "^0.0.1-security",
         "koa-bodyparser": "^4.3.0",
         "koa-convert": "^2.0.0",
+        "koa-cors": "^0.0.16",
         "koa-json": "^2.0.2",
         "koa-json-body": "^5.3.0",
         "koa-router": "^9.4.0",
+        "koa-static": "^5.0.0",
+        "koa2-swagger-ui": "^5.7.0",
         "nodemon": "^2.0.20",
+        "react-syntax-highlighter": "^10.0.0",
         "sinon-test": "^3.1.5",
         "sqlite3": "^5.1.4",
         "supertest": "^6.3.3",
-        "swagger-ui-express": "^4.6.1"
+        "swagger": "^0.7.5",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui": "^4.15.5",
+        "swagger-ui-koa": "^0.0.1",
+        "swagger2": "^4.0.3",
+        "swagger2-koa": "^4.0.0"
     },
     "devDependencies": {
+        "@babel/cli": "^7.21.0",
+        "@babel/core": "^7.21.0",
+        "@babel/plugin-transform-runtime": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
         "chai": "^4.2.0",
         "chai-http": "^4.3.0",
         "chai-json-schema": "^1.5.1",

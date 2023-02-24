@@ -10,20 +10,27 @@ const Koa = require("koa");
 const routes = require("./router/user.router.js");
 const bodyParse = require("koa-bodyparser");
 const koaJson = require("koa-json");
-// const swaggerJsdoc = require("swagger-jsdoc");
-// const swaggerUi = require("swagger-ui-express");
-// const convert = require("koa-convert");
+const cors = require("koa-cors");
+require("dotenv").config();
+const swaggerUi = require("swagger-ui-koa");
+
 
 const koa = new Koa();
 koa.use(bodyParse());
 koa.use(koaJson());
+koa.use(cors());
+
 
 koa.use(routes.routes());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 const server = koa.listen(PORT, () => {
   console.log(`Seu servidor esta rodando em http://localhost:${PORT}`);
+});
+
+routes.get('/', async (ctx, next) => {
+  ctx.body = 'Bem-vindo ao meu servidor';
 });
 
 module.exports = server;
