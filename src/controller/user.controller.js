@@ -32,8 +32,6 @@ const userController = {
 
   async createUser(ctx) {
     const { name, email, password, img, description } = ctx.request.body || {};
-
-    // Definir o schema de validação
     const schema = Joi.object({
       name: Joi.string().required(),
       email: Joi.string().email().required(),
@@ -41,8 +39,6 @@ const userController = {
       img: Joi.string().required(),
       description: Joi.string().required(),
     });
-
-    // Validar os dados da requisição com base no schema
     const { error, value } = schema.validate({
       name,
       email,
@@ -56,10 +52,8 @@ const userController = {
       return;
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(value.password, 10);
 
-    // Inserir os dados no banco de dados
     const sql =
       "INSERT INTO users (name, email, password, img, description) VALUES (?, ?, ?, ?, ?)";
     try {

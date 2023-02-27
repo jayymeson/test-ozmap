@@ -44,7 +44,6 @@ describe("Testes da API de usuários", () => {
       .expect((res) => {
         const user = res.body;
 
-        // verifique se o usuário foi encontrado
         expect(user).toBeDefined();
         expect(user.id).toBe(userId);
       })

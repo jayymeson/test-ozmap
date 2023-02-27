@@ -17,7 +17,7 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ["./src/router/user.router.js"], // altere o caminho para onde estão suas rotas
+  apis: ["./src/router/user.router.js"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
