@@ -52,6 +52,21 @@ const userController = {
       return;
     }
 
+    async function getUserByEmail(email) {
+      const sql = "SELECT * FROM users WHERE email = ?";
+      const user = await db.get(sql, email);
+      return user;
+    }
+
+    const userWithEmail = await getUserByEmail(email);
+    if (userWithEmail) {
+      ctx.status = 400;
+      ctx.body = {
+        message: `Já existe um usuário cadastrado com o e-mail ${email}.`,
+      };
+      return;
+    }
+
     const hashedPassword = await bcrypt.hash(value.password, 10);
 
     const sql =

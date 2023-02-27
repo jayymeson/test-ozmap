@@ -9,7 +9,7 @@ describe("Testes da API de usuários", () => {
   it("Deve criar um novo usuário", (done) => {
     const user = {
       name: "Teste",
-      email: "teste@teste12345.com",
+      email: "teste@teste30.com",
       password: "123456",
       img: "https://example.com/image.jpg",
       description: "Cadastro teste",
@@ -30,7 +30,7 @@ describe("Testes da API de usuários", () => {
       .get("/users")
       .expect(200)
       .expect((res) => {
-        expect(res.body.length).toBeGreaterThan(0);
+        expect(res.body.length).to.be.greaterThan(0);
       })
       .end(done);
   });
@@ -44,8 +44,8 @@ describe("Testes da API de usuários", () => {
       .expect((res) => {
         const user = res.body;
 
-        expect(user).toBeDefined();
-        expect(user.id).toBe(userId);
+        expect(user).to.exist;
+        expect(user.id).to.be.equal(userId);
       })
       .end(done);
   });
